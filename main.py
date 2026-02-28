@@ -13,7 +13,8 @@ def bubble_sort(arr):
         if not swapped:
             break
 def selection_sort(arr):
-    for i in range(len(arr)):
+    size = len(arr)
+    for i in range(size):
         min_index = i
         for j in range(i + 1, size):
             if arr[j] < arr[min_index]:
@@ -31,7 +32,7 @@ def insertionSort(arr):
 
 
 def generate_random_array(size):
-    return [random.randint(0, 100000) for _ in range(size)]
+    return [random.randint(0, 100001) for _ in range(size)]
 
 def test_sorting_algorithms(size):
     print(f"\nArray Size: {size}")
@@ -39,27 +40,26 @@ def test_sorting_algorithms(size):
     original_array = generate_random_array(size)
 
     # Bubble Sort
-    arr1 = copy.deepcopy(original_array)
+    arr1 = copy.copy(original_array)
     start = time.time()
     bubble_sort(arr1)
     end = time.time()
     print(f"Running time for Bubble Sort is {(end - start)*1000:.2f} ms")
 
     # Selection Sort
-    arr2 = copy.deepcopy(original_array)
+    arr2 = copy.copy(original_array)
     start = time.time()
     selection_sort(arr2)
     end = time.time()
     print(f"Running time for Selection Sort is {(end - start)*1000:.2f} ms")
 
     # Insertion Sort
-    arr3 = copy.deepcopy(original_array)
+    arr3 = copy.copy(original_array)
     start = time.time()
     insertionSort(arr3)
     end = time.time()
     print(f"Running time for Insertion Sort is {(end - start)*1000:.2f} ms")
 
-sizes = [10000, 25000, 50000]  
-
-for size in sizes:
+if __name__ == "__main__":
+    size = int(input("Enter the size of the array: "))
     test_sorting_algorithms(size)
